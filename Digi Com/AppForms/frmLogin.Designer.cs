@@ -70,9 +70,9 @@
             // lblAuthRequiredHeader
             // 
             this.lblAuthRequiredHeader.BackColor = System.Drawing.Color.Transparent;
-            this.lblAuthRequiredHeader.Font = new System.Drawing.Font("Tahoma", 15.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthRequiredHeader.Font = new System.Drawing.Font("Tahoma", 12.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAuthRequiredHeader.ForeColor = System.Drawing.Color.DimGray;
-            this.lblAuthRequiredHeader.Location = new System.Drawing.Point(70, 19);
+            this.lblAuthRequiredHeader.Location = new System.Drawing.Point(17, 19);
             this.lblAuthRequiredHeader.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblAuthRequiredHeader.Name = "lblAuthRequiredHeader";
             this.lblAuthRequiredHeader.Size = new System.Drawing.Size(1279, 64);

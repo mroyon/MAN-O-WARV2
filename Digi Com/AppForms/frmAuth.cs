@@ -73,8 +73,8 @@ namespace Digi_Com.AppForms
                    
                 }
 
-                string pattern = @"^\d{3}#\d{4}#\d+#.+";
-                //string pattern = @"#\b\d+?\b#";
+                //string pattern = @"^\d{3}#\d{4}#\d+#.+";
+                string pattern = @"#\b\d+?\b#";
                 string input = messageFromArduino;
                 Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
                 if (m.Success)

@@ -44,7 +44,7 @@ namespace Digi_Com.AppForms
         /// Encrypts a file from its path and a plain password.
         /// </summary>
         /// <param name="inputFile"></param>
-        public string FileEncrypt(string inputFile)
+        public string FileEncrypt(string inputFile, string key)
         {
             string secrateKey = string.Empty;
             string fileName = string.Empty;

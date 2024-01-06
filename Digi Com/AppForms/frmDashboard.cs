@@ -424,7 +424,7 @@ namespace Digi_Com.AppForms
                             //Thread.Sleep(1000);
 
                             //ronty clean up
-                            string newEncFileName = string.Empty; // security.FileEncrypt(Global.filename, Global.SecretKey);
+                            string newEncFileName = security.FileEncrypt(Global.filename, Global.GenKey);
                             // To increase the security of the encryption, delete the given password from the memory !
 
                             //byte[] bytes = File.ReadAllBytes(Global.filename + ".aes");

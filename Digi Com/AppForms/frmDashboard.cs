@@ -605,7 +605,7 @@ namespace Digi_Com.AppForms
 
                         _isReceiving = false;
                         receivedLength = 0;
-                        fulllength = 0;
+                        fulllength = 0; 
                         _db.writeLog("FIle Received.");
                         this.BeginInvoke(new Action(delegate ()
                         {

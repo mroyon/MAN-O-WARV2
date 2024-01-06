@@ -431,7 +431,7 @@ namespace Digi_Com.AppForms
                             byte[] bytes = File.ReadAllBytes(newEncFileName);
 
                             Global.fileByteLength = bytes.Length;
-
+                            Thread.Sleep(1000);
                             Trport.WriteLine("500#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
                             Thread.Sleep(100);
                             byte[] b2 = new byte[2048];
@@ -560,6 +560,7 @@ namespace Digi_Com.AppForms
                 #endregion
                 if (_isReceiving)
                 {
+                    Thread.Sleep(2000);
                     int bytes = Trport.BytesToRead;
                     byte[] byte_buffer = new byte[bytes];
                     Trport.Read(byte_buffer, 0, bytes);
@@ -577,6 +578,7 @@ namespace Digi_Com.AppForms
         }
         public void Display(byte[] inputData)
         {
+            Thread.Sleep(2000);
 
             // textBox1.Invoke(new DelegateDispla,y(showdata), inputData);
 

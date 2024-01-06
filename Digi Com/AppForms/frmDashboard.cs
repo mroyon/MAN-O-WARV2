@@ -596,7 +596,7 @@ namespace Digi_Com.AppForms
                     FS.Write(inputData, 0, inputData.Length);
 
 
-                    if (receivedLength == fulllength)
+                    if (receivedLength == Global.fileByteLength)
                     {
                         FS.Close();
                        

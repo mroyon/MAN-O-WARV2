@@ -546,7 +546,6 @@ namespace Digi_Com.AppForms
                             wplayer.URL = "downloading.mp3";
                             wplayer.controls.play();
                             wplayer.settings.setMode("loop", true);
-
                         }
                   ));
 
@@ -608,7 +607,6 @@ namespace Digi_Com.AppForms
 
                         _isReceiving = false;
                         receivedLength = 0;
-                        Global.fileByteLength = 0; 
                         _db.writeLog("FIle Received.");
                         this.BeginInvoke(new Action(delegate ()
                         {

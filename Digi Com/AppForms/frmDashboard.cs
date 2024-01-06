@@ -39,7 +39,7 @@ namespace Digi_Com.AppForms
 
         byte[] receivedByte = null;
 
-        double receivedLength, fulllength;
+        double receivedLength;
         bool _isReceiving = false;
         bool isCaller = false;
         public frmDashboard(Form frmlogin)
@@ -534,7 +534,7 @@ namespace Digi_Com.AppForms
                     if (Convert.ToInt32(code) == 500)
                     {
                         //Store Value for P
-                        fulllength = Convert.ToDouble(Global.fileByteLength);
+                        //fulllength = Convert.ToDouble(Global.fileByteLength);
                         Console.WriteLine("Full Length: " + Global.fileByteLength.ToString());
 
                         _isReceiving = true;
@@ -607,7 +607,7 @@ namespace Digi_Com.AppForms
 
                         _isReceiving = false;
                         receivedLength = 0;
-                        fulllength = 0; 
+                        Global.fileByteLength = 0; 
                         _db.writeLog("FIle Received.");
                         this.BeginInvoke(new Action(delegate ()
                         {

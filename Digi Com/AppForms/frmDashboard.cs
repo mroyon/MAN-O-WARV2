@@ -266,6 +266,10 @@ namespace Digi_Com.AppForms
                     string CallerID = SecondPart.Substring(0, 2); // Caller ID
                     string Receiver = SecondPart.Substring(2, 2);
 
+
+                    string caller_personel_fingre_key_no = tokens[2];
+                    string GenKey = tokens[3];
+
                     Console.WriteLine("Response Code: " + code);
                     Console.WriteLine("Response Caller ID: " + CallerID);
 

@@ -1,4 +1,5 @@
-﻿using NAudio.CoreAudioApi;
+﻿using ManOWarEncLibrary;
+using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using NAudio.Wave.Compression;
 using System;
@@ -529,8 +530,24 @@ namespace Digi_Com.AppForms
                 btnSendFile.Enabled = false;
                 btnSendFile.Text = "Busy...";
                 timerResponse.Start();
+                clsEncLibrary objEncDec2 = new clsEncLibrary();
+
+
+                DataTable _data = _db.getScheduleListByDate(DateTime.Now.ToString("yyyy-MM-dd"));
+                if (_data != null && _data.Rows.Count > 0)
+                {
+                    foreach (DataRow row in _data.Rows)
+                    {
+                        string callerCode = Global.personel_fingre_key_no;
+                        DateTime truncatedDateTime = DateTime.Now;
+                        string frequency = row["SCHEDULE_FREQ"].ToString();
+                        string  secrateKey = row["SCHEDULE_SECRET"].ToString();
+                        Global.GenKey = objEncDec2.GetKeyTagGenerated(callerCode, truncatedDateTime, frequency, secrateKey);
+                    }
+                }
+
                 _db.writeLog("Outgoing Call To Station " +StationName);
-                comTR.WriteLine("101#" + Global.MyStationID+ DestinationStation);
+                comTR.WriteLine("101#" + Global.MyStationID + DestinationStation + "#" + Global.personel_fingre_key_no + "#"+ Global.GenKey);
                 Global.isCaller = true;
             }
             {

@@ -526,8 +526,15 @@ namespace ManOWarEncLibrary
             }
         }
 
+        public string GetKeyTagGenerated(string callerCode, DateTime truncatedDateTime, string frequency, string secrateKey)
+        {
+            string timestamp = truncatedDateTime.ToString("yyyyMMddHH");
+            timestamp = encryptSimple(timestamp);
+            string key = encryptSimple(callerCode + timestamp + frequency + secrateKey);
+            key = Convert.ToBase64String(Encoding.UTF8.GetBytes(key));
 
-
+            return key;
+        }
 
     }
 }

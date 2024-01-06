@@ -421,12 +421,12 @@ namespace Digi_Com.AppForms
                         if (Global.filename != null)
                         {
                             //Trport.WriteLine("307#10");
-                            //Thread.Sleep(1000);
+                            Thread.Sleep(2000);
 
                             //ronty clean up
                             string newEncFileName = security.FileEncrypt(Global.filename, Global.GenKey);
                             // To increase the security of the encryption, delete the given password from the memory !
-
+                            Thread.Sleep(1000);
                             //byte[] bytes = File.ReadAllBytes(Global.filename + ".aes");
                             byte[] bytes = File.ReadAllBytes(newEncFileName);
 
@@ -557,6 +557,7 @@ namespace Digi_Com.AppForms
                     #endregion
 
                 }
+                Thread.Sleep(3000);
                 #endregion
                 if (_isReceiving)
                 {
@@ -578,7 +579,7 @@ namespace Digi_Com.AppForms
         }
         public void Display(byte[] inputData)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             // textBox1.Invoke(new DelegateDispla,y(showdata), inputData);
 

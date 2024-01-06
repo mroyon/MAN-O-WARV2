@@ -69,16 +69,16 @@
             // 
             // lblAuthRequiredHeader
             // 
-            this.lblAuthRequiredHeader.AutoSize = true;
             this.lblAuthRequiredHeader.BackColor = System.Drawing.Color.Transparent;
             this.lblAuthRequiredHeader.Font = new System.Drawing.Font("Tahoma", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAuthRequiredHeader.ForeColor = System.Drawing.Color.DimGray;
-            this.lblAuthRequiredHeader.Location = new System.Drawing.Point(442, 31);
+            this.lblAuthRequiredHeader.Location = new System.Drawing.Point(73, 19);
             this.lblAuthRequiredHeader.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblAuthRequiredHeader.Name = "lblAuthRequiredHeader";
-            this.lblAuthRequiredHeader.Size = new System.Drawing.Size(592, 64);
+            this.lblAuthRequiredHeader.Size = new System.Drawing.Size(1279, 64);
             this.lblAuthRequiredHeader.TabIndex = 1;
-            this.lblAuthRequiredHeader.Text = "Authentication Required";
+            this.lblAuthRequiredHeader.Text = "Perfect Forward Secrecy Authentication Required";
+            this.lblAuthRequiredHeader.Click += new System.EventHandler(this.lblAuthRequiredHeader_Click);
             // 
             // lblAuthRequired
             // 

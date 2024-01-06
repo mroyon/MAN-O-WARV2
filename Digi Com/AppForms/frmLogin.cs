@@ -239,5 +239,10 @@ namespace Digi_Com.AppForms
         {
             Application.ExitThread();
         }
+
+        private void lblAuthRequiredHeader_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

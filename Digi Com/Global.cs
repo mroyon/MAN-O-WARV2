@@ -149,6 +149,12 @@ namespace Digi_Com
             set { _genKey = value; }
         }
 
+        private static string _callerFingerID = string.Empty;
+        public static string callerFingerID
+        {
+            get { return _callerFingerID; }
+            set { _callerFingerID = value; }
+        }
 
 
         private static string _receivedCallerID = "";

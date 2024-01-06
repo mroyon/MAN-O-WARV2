@@ -271,6 +271,9 @@ namespace Digi_Com.AppForms
                     string caller_personel_fingre_key_no = tokens[2];
                     string GenKey = tokens[3];
 
+                    Global.GenKey = GenKey;
+
+
                     Console.WriteLine("Response Code: " + code);
                     Console.WriteLine("Response Caller ID: " + CallerID);
 
@@ -280,6 +283,7 @@ namespace Digi_Com.AppForms
                     {
 
                         _db.writeLog("Incoming call from " + _db.getStationByStationCode(CallerID.ToString()));
+                        _db.writeLog("Incoming Secrate Key " + Global.GenKey);
                         //Invoke Main Thread and Update Info to UI
                         //Verify Receiver
                         this.BeginInvoke(new Action(delegate ()
@@ -522,7 +526,8 @@ namespace Digi_Com.AppForms
 
                 #region Pattern 000#00#000000
                 //Pattern for Match XXX#XX#XXXXXXn
-                string patternFor3Hash = @"\d{3}#\d{4}#\d*";
+                string patternFor3Hash = @"^\d{3}#\d{4}#\d+#.+";
+                //string patternFor3Hash = @"\d{3}#\d{4}#\d*";
                 Match m3 = Regex.Match(input, patternFor3Hash, RegexOptions.IgnoreCase);
 
                 if (m3.Success)

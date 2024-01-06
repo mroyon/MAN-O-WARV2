@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digi Com", "Digi Com\Digi Com.csproj", "{26FF1B10-E92C-4181-A4E0-854E2545A5A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManOWarEncLibrary", "ComEncLibrary\ManOWarEncLibrary.csproj", "{21A93CAE-548A-4ED6-A027-FF5D8C7DC479}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testApp", "testApp\testApp.csproj", "{72222BEF-3EEE-4B3B-AFB2-841F4CE6D76B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26FF1B10-E92C-4181-A4E0-854E2545A5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FF1B10-E92C-4181-A4E0-854E2545A5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FF1B10-E92C-4181-A4E0-854E2545A5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FF1B10-E92C-4181-A4E0-854E2545A5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A93CAE-548A-4ED6-A027-FF5D8C7DC479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A93CAE-548A-4ED6-A027-FF5D8C7DC479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A93CAE-548A-4ED6-A027-FF5D8C7DC479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A93CAE-548A-4ED6-A027-FF5D8C7DC479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72222BEF-3EEE-4B3B-AFB2-841F4CE6D76B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72222BEF-3EEE-4B3B-AFB2-841F4CE6D76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72222BEF-3EEE-4B3B-AFB2-841F4CE6D76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72222BEF-3EEE-4B3B-AFB2-841F4CE6D76B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {307C700B-E442-4247-8405-CBD849B78805}
+	EndGlobalSection
+EndGlobal

@@ -1,5 +1,5 @@
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -250,7 +250,7 @@ namespace Digi_Com.AppForms
 
 
                 #region Pattern 000#00
-                string pattern = @"^\d{3}#\d{4}#\d+#.+";
+                string pattern = @"^\d{3}#\d{4}#\d+#.+#\d+";
                 //string pattern = @"\d{3}#\d{4}#\d+#\[.*\]";
                 string input = messageFromArduino;
                 Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
@@ -273,6 +273,8 @@ namespace Digi_Com.AppForms
 
                     Global.GenKey = GenKey;
                     Global.callerFingerID = caller_personel_fingre_key_no;
+
+                    Global.fileByteLength = long.Parse(tokens[4]);
 
                     Console.WriteLine("Response Code: " + code);
                     Console.WriteLine("Response Caller ID: " + CallerID);
@@ -313,7 +315,7 @@ namespace Digi_Com.AppForms
 
 
                                     //Send Call Accepted Resoonse to the Caller
-                                    Trport.WriteLine("300#" + Global.MyStationID + "00" + "#"+ Global.callerFingerID+ "#"+ Global.GenKey);
+                                    Trport.WriteLine("300#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
                                     txtDisplay.Text = "Creating Session.......";
                                     Global.isCaller = false;
                                 }
@@ -324,7 +326,7 @@ namespace Digi_Com.AppForms
                                     wplayer.controls.play();
                                     wplayer.settings.setMode("loop", false);
                                     //Send Call Rejected Code to Caller
-                                    Trport.WriteLine("100#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
+                                    Trport.WriteLine("100#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
 
                                 }
 
@@ -364,7 +366,7 @@ namespace Digi_Com.AppForms
                     #region Code 300 | When Other Party Accept Call
                     if (Convert.ToInt32(code) == 300)
                     {
-                       
+
                         Global.isCallReceived = true;
                         Global.ReceivedCallerID = CallerID.ToString();
                         _db.writeLog("Call accepted by  " + CallerID.ToString());
@@ -377,7 +379,7 @@ namespace Digi_Com.AppForms
                         //Now Generate Value of P & G to Recipient
 
                         //Now I will send my Public Key to the Recipient
-                        Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey)); //Sending My Public Key
+                        Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString())); //Sending My Public Key
 
 
                     }
@@ -495,7 +497,9 @@ namespace Digi_Com.AppForms
 
                 #region Pattern 000#00#000000
                 //Pattern for Match XXX#XX#XXXXXXn
-                string patternFor3Hash = @"^\d{3}#\d{4}#\d+#.+";
+                string patternFor3Hash = @"^\d{3}#\d{4}#\d+#.+#\d+";
+
+                //string patternFor3Hash = @"^\d{3}#\d{4}#\d+#.+";
                 //string patternFor3Hash = @"\d{3}#\d{4}#\d*";
                 Match m3 = Regex.Match(input, patternFor3Hash, RegexOptions.IgnoreCase);
 
@@ -512,7 +516,7 @@ namespace Digi_Com.AppForms
 
                     string Response = tokens[2];
 
-                   
+
 
                     #region Code 303 | Store Bob's Key & Generate Secret Key
                     if (Convert.ToInt32(code) == 303)
@@ -586,7 +590,7 @@ namespace Digi_Com.AppForms
             {
 
                 Global.byteArrayList.Add(inputData);
-                
+
 
 
                 using (FS = new FileStream(outputFilename + ".aes", FileMode.Append, FileAccess.Write))
@@ -599,7 +603,7 @@ namespace Digi_Com.AppForms
                     if (receivedLength == Global.fileByteLength)
                     {
                         FS.Close();
-                       
+
                         // Decrypt the file
                         //ronty
                         security.FileDecrypt(outputFilename + ".aes", outputFilename);
@@ -607,12 +611,13 @@ namespace Digi_Com.AppForms
 
                         _isReceiving = false;
                         receivedLength = 0;
+                        Global.fileByteLength = 0;
                         _db.writeLog("FIle Received.");
                         this.BeginInvoke(new Action(delegate ()
                         {
                             txtDisplay.Text = "File Received!";
                             txtDisplay.ScrollToCaret();
-                           // btnPlayMessage.Enabled = true;
+                            // btnPlayMessage.Enabled = true;
                             wplayer.controls.stop();
                             wplayer.settings.setMode("loop", false);
                             //When Call Accepted

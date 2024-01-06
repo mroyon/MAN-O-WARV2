@@ -547,7 +547,7 @@ namespace Digi_Com.AppForms
                 }
 
                 _db.writeLog("Outgoing Call To Station " +StationName);
-                comTR.WriteLine("101#" + Global.MyStationID + DestinationStation + "#" + Global.personel_fingre_key_no + "#"+ Global.GenKey);
+                comTR.WriteLine("101#" + Global.MyStationID + DestinationStation + "#" + Global.personel_fingre_key_no + "#"+ Global.GenKey+"#" +"0");
                 Global.isCaller = true;
             }
             {

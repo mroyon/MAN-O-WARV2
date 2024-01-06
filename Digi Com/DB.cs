@@ -904,7 +904,7 @@ namespace Digi_Com
         public void GenerateSectetKey(BigInteger y, int P )
         {
            BigInteger ka = power(y, Global.PrivateKey, P);
-            Global.SecretKey = ka.ToString();
+            //Global.SecretKey = ka.ToString();
         }
 
 

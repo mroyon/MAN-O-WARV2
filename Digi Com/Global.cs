@@ -97,33 +97,33 @@ namespace Digi_Com
             set { _PrivateKey = value; }
         }
 
-        public static string  SecretKey
-        {
-            get { return _secretKey; }
-            set { _secretKey = value; }
-        }
+        //public static string  SecretKey
+        //{
+        //    get { return _secretKey; }
+        //    set { _secretKey = value; }
+        //}
 
-        public static string BobsPublicKey
-        {
-            get { return _bobsPublicKey; }
-            set { _bobsPublicKey = value; }
-        }
+        //public static string BobsPublicKey
+        //{
+        //    get { return _bobsPublicKey; }
+        //    set { _bobsPublicKey = value; }
+        //}
         public static string MyPublicKey
         {
             get { return _MyPublicKey; }
             set { _MyPublicKey = value; }
         }
-        public static string ValueofP
-        {
-            get { return _ValueofP; }
-            set { _ValueofP = value; }
-        }
+        //public static string ValueofP
+        //{
+        //    get { return _ValueofP; }
+        //    set { _ValueofP = value; }
+        //}
 
-        public static string ValueofG
-        {
-            get { return _ValueofG; }
-            set { _ValueofG = value; }
-        }
+        //public static string ValueofG
+        //{
+        //    get { return _ValueofG; }
+        //    set { _ValueofG = value; }
+        //}
         public static string filename
         {
             get { return _filename; }
@@ -155,6 +155,14 @@ namespace Digi_Com
             get { return _callerFingerID; }
             set { _callerFingerID = value; }
         }
+
+        private static long _fileByteLength = 0;
+        public static long fileByteLength
+        {
+            get { return _fileByteLength; }
+            set { _fileByteLength = value; }
+        }
+
 
 
         private static string _receivedCallerID = "";

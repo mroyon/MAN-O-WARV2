@@ -324,7 +324,7 @@ namespace Digi_Com.AppForms
                                     wplayer.controls.play();
                                     wplayer.settings.setMode("loop", false);
                                     //Send Call Rejected Code to Caller
-                                    Trport.WriteLine("100#" + Global.MyStationID + "00");
+                                    Trport.WriteLine("100#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
 
                                 }
 
@@ -376,21 +376,8 @@ namespace Digi_Com.AppForms
 
                         //Now Generate Value of P & G to Recipient
 
-                        int P = _db.GetValueForP();
-                        BigInteger G = _db.GetValueForG();
-
-                        Global.ValueofP = P.ToString();
-                        Global.ValueofG = G.ToString();
-
-                        //Send Value of P to the Recipient
-                        Trport.WriteLine(String.Format("301#" + Global.MyStationID + "00" + "#{0}", P));  //Respose Code # Station ID # Value of P
-                        Thread.Sleep(2000);
-                        //Send Value of G to the Recipient
-                        Trport.WriteLine(String.Format("302#" + Global.MyStationID + "00" + "#{0}", G));  //Respose Code # Station ID # Value of P
-                        Thread.Sleep(2000);
-
                         //Now I will send my Public Key to the Recipient
-                        Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#{0}", _db.GeneratePublicKey(Convert.ToInt32(Global.User["PERSONEL_FINGRE_KEY_NO"]), Convert.ToDouble(Global.TodaysFrequency), BigInteger.Parse(Global.ValueofG), Convert.ToInt32(Global.ValueofP)))); //Sending My Public Key
+                        Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey)); //Sending My Public Key
 
 
                     }
@@ -399,7 +386,6 @@ namespace Digi_Com.AppForms
                     #region Code 304 | Ready To Receive/Send File
                     if (Convert.ToInt32(code) == 304)
                     {
-
                         this.BeginInvoke(new Action(delegate ()
                         {
                             if (Global.isCaller)
@@ -407,12 +393,8 @@ namespace Digi_Com.AppForms
                                 txtDisplay.Text += "\r\nReady Send File";
                                 txtDisplay.ScrollToCaret();
                                 Thread.Sleep(500);
-
-                                Trport.WriteLine("305#" + Global.MyStationID + "00");
+                                Trport.WriteLine("305#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
                             }
-
-
-
                         }
                         ));
                     }
@@ -421,22 +403,12 @@ namespace Digi_Com.AppForms
                     #region Code 305 | Ready To Reveive
                     if (Convert.ToInt32(code) == 305)
                     {
-
-
                         this.BeginInvoke(new Action(delegate ()
                         {
                             txtDisplay.Text = "\r\nReady To Receive File";
                             txtDisplay.ScrollToCaret();
-
-
-
                             //File Me File
-                            Trport.WriteLine("306#" + Global.MyStationID + "00");
-
-
-
-
-
+                            Trport.WriteLine("306#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
                         }
                         ));
                     }
@@ -451,20 +423,16 @@ namespace Digi_Com.AppForms
                             //Trport.WriteLine("307#10");
                             //Thread.Sleep(1000);
 
-                             
-                            // For additional security Pin the password of your files
-                            GCHandle gch = GCHandle.Alloc(Global.SecretKey, GCHandleType.Pinned);
-                            // Encrypt the file
                             //ronty clean up
                             string newEncFileName = string.Empty; // security.FileEncrypt(Global.filename, Global.SecretKey);
                             // To increase the security of the encryption, delete the given password from the memory !
-                            ZeroMemory(gch.AddrOfPinnedObject(), Global.SecretKey.Length * 2);
-                            gch.Free();
 
                             //byte[] bytes = File.ReadAllBytes(Global.filename + ".aes");
                             byte[] bytes = File.ReadAllBytes(newEncFileName);
 
-                            Trport.WriteLine("500#" + Global.MyStationID + "00#" + bytes.Length);
+                            Global.fileByteLength = bytes.Length;
+
+                            Trport.WriteLine("500#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
                             Thread.Sleep(100);
                             byte[] b2 = new byte[2048];
                             //Array.Copy(bytes, bytes.Length / 2, b1, 0, b1.Length);
@@ -542,48 +510,21 @@ namespace Digi_Com.AppForms
                     string CallerID = SecondPart.Substring(0, 2); // Caller ID
                     string Receiver = SecondPart.Substring(2, 2);
 
-
                     string Response = tokens[2];
 
-                    #region Code 301 | Store Value of P
-                    if (Convert.ToInt32(code) == 301)
-                    {
-                        //Store Value for P
-                        Global.ValueofP = Response;
-
-                    }
-
-                    #endregion
-
-                    #region Code 302 | Store Value of G & Send My Public Key to Caller
-                    if (Convert.ToInt32(code) == 302)
-                    {
-
-                        //Store Value of G
-                        Global.ValueofG = Response;
-                        Thread.Sleep(500);
-
-                        Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00#{0}", _db.GeneratePublicKey(10, 403, BigInteger.Parse(Global.ValueofG), Convert.ToInt32(Global.ValueofP)))); //Sending My Public Key
-
-                    }
-                    #endregion
+                   
 
                     #region Code 303 | Store Bob's Key & Generate Secret Key
                     if (Convert.ToInt32(code) == 303)
                     {
 
-                        //s
-
-                        Global.BobsPublicKey = Response;
-                        Global.SecretKey = _db.power(BigInteger.Parse(Global.BobsPublicKey), Global.PrivateKey, Convert.ToDouble(Global.ValueofP)).ToString(); // Secret key for Alice 
-
                         this.BeginInvoke(new Action(delegate ()
                         {
                             txtDisplay.Text = "Session Created.";
-                            txtDisplay.Text += "\r\nSecret Key: " + Global.SecretKey;
+                            txtDisplay.Text += "\r\nSecret Key: " + Global.GenKey;
                             txtDisplay.ScrollToCaret();
 
-                            Trport.WriteLine("304#" + Global.MyStationID + "00");
+                            Trport.WriteLine("304#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
                         }
                         ));
                     }
@@ -593,8 +534,8 @@ namespace Digi_Com.AppForms
                     if (Convert.ToInt32(code) == 500)
                     {
                         //Store Value for P
-                        fulllength = Convert.ToDouble(Response);
-                        Console.WriteLine("Full Length: " + Response);
+                        fulllength = Convert.ToDouble(Global.fileByteLength);
+                        Console.WriteLine("Full Length: " + Global.fileByteLength.ToString());
 
                         _isReceiving = true;
 
@@ -656,14 +597,11 @@ namespace Digi_Com.AppForms
                     if (receivedLength == fulllength)
                     {
                         FS.Close();
-                        GCHandle gch = GCHandle.Alloc(Global.SecretKey, GCHandleType.Pinned);
-
+                       
                         // Decrypt the file
-                        security.FileDecrypt(outputFilename + ".aes", outputFilename, Global.SecretKey);
+                        //ronty
+                        security.FileDecrypt(outputFilename + ".aes", outputFilename);
 
-                        // To increase the security of the decryption, delete the used password from the memory !
-                        ZeroMemory(gch.AddrOfPinnedObject(), Global.SecretKey.Length * 2);
-                        gch.Free();
 
                         _isReceiving = false;
                         receivedLength = 0;

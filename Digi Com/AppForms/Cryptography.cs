@@ -74,8 +74,7 @@ namespace Digi_Com.AppForms
         /// </summary>
         /// <param name="inputFile"></param>
         /// <param name="outputFile"></param>
-        /// <param name="password"></param>
-        public void FileDecrypt(string inputFile, string outputFile, string password)
+        public void FileDecrypt(string inputFile, string outputFile)
         {
             string fileName = string.Empty;
             string secrateKey = string.Empty;

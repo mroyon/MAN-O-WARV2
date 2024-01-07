@@ -178,163 +178,133 @@ namespace Digi_Com.AppForms
         }
 
         void ScPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        { }
+
+
+        private string GetStep1_101(string[] tokens)
         {
+            string retValue = string.Empty;
 
-            //    string messageFromArduino = string.Empty;
+            string code = tokens[0]; //Response Code
+            string SecondPart = tokens[1];
+            string CallerID = SecondPart.Substring(0, 2); // Caller ID
+            string Receiver = SecondPart.Substring(2, 2);
 
-            //    try
-            //    {
-            //        btnLogin.BeginInvoke(new Action(delegate () { this.btnLogin.Text = "Please Wait.."; }));
-            //        messageFromArduino = port.ReadLine();
-            //        // Console.Write(port.ReadLine());
-            //        lblStatus.BeginInvoke(new Action(delegate () { this.lblStatus.Text = messageFromArduino; }));
-            //        if (messageFromArduino.Trim() == "Found fingerprint sensor!")
-            //        {
+            string caller_personel_fingre_key_no = tokens[2];
+            string GenKey = tokens[3];
 
-            //            port.Write("90");
-            //            btnLogin.BeginInvoke(new Action(delegate () { this.btnLogin.Text = "Place your finger!"; }));
-            //        }
+            Global.GenKey = GenKey;
+            Global.callerFingerID = caller_personel_fingre_key_no;
+            Global.fileByteLength = long.Parse(tokens[4]);
+            Global.StepCode = "";
+            
+            _db.writeLog("Incoming call from " + _db.getStationByStationCode(CallerID.ToString()));
 
-            //        string pattern = @"#\b\d+?\b#";
-            //        string input = messageFromArduino;
-            //        Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
-            //        if (m.Success)
-            //        {
-            //            btnLogin.BeginInvoke(new Action(delegate () { this.btnLogin.Text = "Place your finger!"; }));
-
-            //            this.BeginInvoke(new Action(delegate () {
-            //                port.Close();
-            //                afterAuthSuccess(_userfpid);
-
-            //            }));
-            //            _userfpid = Convert.ToInt32(m.Value.Replace("#", ""));
-            //            //afterAuthSuccess(Convert.ToInt32(m.Value.Replace("#", "")));
-
-            //            //MessageBox.Show("User Found: " + m.Value.Replace("#", ""));
-
-            //        }
+            this.BeginInvoke((Action)(() =>
+            {
+                //Incoming Call
+                wplayer.URL = "ringtone.mp3";
+                wplayer.controls.play();
+                wplayer.settings.setMode("loop", true);
 
 
-            //        Console.WriteLine(messageFromArduino.Trim());
-            //        //string pattern = @"\bF1\w*\b";
+                txtDisplay.Visible = true;
+                txtDisplay.Text = "Incoming call from " + _db.getStationByStationCode(CallerID.ToString());
+                //Verification Completed
+                frmAuth authfrm = new frmAuth();
+                authfrm.Type = 1;
+                authfrm.ShowDialog();
+                if (authfrm.AuthPass)
+                {
+                    wplayer.controls.stop();
 
-            //        // Console.Write(messageFromArduino);
-            //    }
-            //    catch (Exception exc)
-            //    {
-            //        MessageBox.Show(exc.InnerException.Message);
-            //    }
+                    if (authfrm.Resposne == 1)
+                    {
+                        //When Call Accepted
+                        wplayer.URL = "accept.mp3";
+                        wplayer.controls.play();
+                        wplayer.settings.setMode("loop", false);
 
+                        //Send Call Accepted Resoonse to the Caller
+                        Trport.WriteLine("300#" + Global.MyStationID + "00" + "#" + Global.personel_fingre_key_no + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
+                        txtDisplay.Text = "Creating Session.......";
+                        Global.isCaller = false;
+                    }
+                    else
+                    {
+                        //Call Rejected
+                        wplayer.URL = "CallDrop.mp3";
+                        wplayer.controls.play();
+                        wplayer.settings.setMode("loop", false);
+                        //Send Call Rejected Code to Caller
+                        Trport.WriteLine("100#" + Global.MyStationID + "00" + "#" + Global.personel_fingre_key_no + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
+                    }
 
-            //    _MessageFromDevice += messageFromArduino;
-
-
-
-            //   textBoxIncoming.Dispatcher.BeginInvoke(new Action(delegate () { this.textBoxIncoming.Text += messageFromArduino; }));
+                }
+            }));
+            return retValue;
         }
+
+        private string GetStep_100(string[] tokens)
+        {
+            string retValue = string.Empty;
+
+            string code = tokens[0]; //Response Code
+            string SecondPart = tokens[1];
+            string CallerID = SecondPart.Substring(0, 2); // Caller ID
+            string Receiver = SecondPart.Substring(2, 2);
+
+            string caller_personel_fingre_key_no = tokens[2];
+            string GenKey = tokens[3];
+
+            Global.GenKey = GenKey;
+            Global.callerFingerID = caller_personel_fingre_key_no;
+            Global.fileByteLength = long.Parse(tokens[4]);
+            Global.StepCode = "";
+            Global.isCallReceived = true;
+
+            //  this.BeginInvoke(new Action(delegate () { _db.PlayRingTone(false); }));
+            _db.writeLog("Call rejected by  " + _db.getStationByStationCode(CallerID.ToString()));
+            wplayer.controls.stop();
+            wplayer.URL = "CallDrop.mp3";
+            wplayer.controls.play();
+            wplayer.settings.setMode("loop", false);
+
+            this.BeginInvoke((Action)(() =>
+            {
+                txtDisplay.Text = "Call rejected by  " + _db.getStationByStationCode(CallerID.ToString());
+            }
+            ));
+
+            return retValue;
+        }
+
 
         void TrPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
             string messageFromArduino = string.Empty;
-
             try
             {
                 if (!_isReceiving)
                 {
                     messageFromArduino = Trport.ReadLine();
-                    Console.Write(messageFromArduino);
                 }
 
-
-
-
-                #region Pattern 000#00
                 string pattern = @"^\d{3}#\d{4}#\d+#.+#\d+";
                 //string pattern = @"\d{3}#\d{4}#\d+#\[.*\]";
                 string input = messageFromArduino;
                 Match m = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
-
-
                 if (m.Success)
                 {
-
                     string str = m.Value;
                     string[] tokens = str.Split('#');
 
-                    string code = tokens[0]; //Response Code
-                    string SecondPart = tokens[1];
-                    string CallerID = SecondPart.Substring(0, 2); // Caller ID
-                    string Receiver = SecondPart.Substring(2, 2);
-
-
-                    string caller_personel_fingre_key_no = tokens[2];
-                    string GenKey = tokens[3];
-
-                    Global.GenKey = GenKey;
-                    Global.callerFingerID = caller_personel_fingre_key_no;
-
-                    Global.fileByteLength = long.Parse(tokens[4]);
-
-                    Console.WriteLine("Response Code: " + code);
-                    Console.WriteLine("Response Caller ID: " + CallerID);
-
+                    string code = tokens[0]; 
 
                     #region Code 101 When There is an Incoming Call
-                    if (Convert.ToInt32(code) == 101 && Receiver == Global.MyStationID)
+                    if (Convert.ToInt32(code) == 101)
                     {
-
-                        _db.writeLog("Incoming call from " + _db.getStationByStationCode(CallerID.ToString()));
-                        _db.writeLog("Incoming Secrate Key " + Global.GenKey);
-                        //Invoke Main Thread and Update Info to UI
-                        //Verify Receiver
-                        this.BeginInvoke(new Action(delegate ()
-                        {
-                            //Incoming Call
-                            wplayer.URL = "ringtone.mp3";
-                            wplayer.controls.play();
-                            wplayer.settings.setMode("loop", true);
-
-
-                            txtDisplay.Visible = true;
-                            txtDisplay.Text = "Incoming call from " + _db.getStationByStationCode(CallerID.ToString());
-                            //Verification Completed
-                            frmAuth authfrm = new frmAuth();
-                            authfrm.Type = 1;
-                            authfrm.ShowDialog();
-                            if (authfrm.AuthPass)
-                            {
-                                wplayer.controls.stop();
-
-                                if (authfrm.Resposne == 1)
-                                {
-                                    //When Call Accepted
-                                    wplayer.URL = "accept.mp3";
-                                    wplayer.controls.play();
-                                    wplayer.settings.setMode("loop", false);
-
-
-                                    //Send Call Accepted Resoonse to the Caller
-                                    Trport.WriteLine("300#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
-                                    txtDisplay.Text = "Creating Session.......";
-                                    Global.isCaller = false;
-                                }
-                                else
-                                {
-                                    //Call Rejected
-                                    wplayer.URL = "CallDrop.mp3";
-                                    wplayer.controls.play();
-                                    wplayer.settings.setMode("loop", false);
-                                    //Send Call Rejected Code to Caller
-                                    Trport.WriteLine("100#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
-
-                                }
-
-                            }
-
-                        }));//Invoke Main Thread End
-
-
+                        GetStep1_101(tokens);
                     }
 
                     #endregion
@@ -344,22 +314,7 @@ namespace Digi_Com.AppForms
                     //When Call Rejected by Other Party
                     if (Convert.ToInt32(code) == 100)
                     {
-                        Global.isCallReceived = true;
-
-                        //  this.BeginInvoke(new Action(delegate () { _db.PlayRingTone(false); }));
-                        _db.writeLog("Call rejected by  " + _db.getStationByStationCode(CallerID.ToString()));
-                        wplayer.controls.stop();
-                        wplayer.URL = "CallDrop.mp3";
-                        wplayer.controls.play();
-                        wplayer.settings.setMode("loop", false);
-
-                        this.BeginInvoke(new Action(delegate ()
-                        {
-                            txtDisplay.Text = "Call rejected by  " + _db.getStationByStationCode(CallerID.ToString());
-                        }
-                        ));
-
-
+                        GetStep_100(tokens);
                     }
                     #endregion
 
@@ -377,7 +332,7 @@ namespace Digi_Com.AppForms
                         }));
 
                         //Now Generate Value of P & G to Recipient
-
+                        
                         //Now I will send my Public Key to the Recipient
                         Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString())); //Sending My Public Key
 
@@ -395,7 +350,7 @@ namespace Digi_Com.AppForms
                                 txtDisplay.Text += "\r\nReady Send File";
                                 txtDisplay.ScrollToCaret();
                                 Thread.Sleep(500);
-                                Trport.WriteLine("305#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
+                                Trport.WriteLine("305#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
                             }
                         }
                         ));
@@ -410,7 +365,7 @@ namespace Digi_Com.AppForms
                             txtDisplay.Text = "\r\nReady To Receive File";
                             txtDisplay.ScrollToCaret();
                             //File Me File
-                            Trport.WriteLine("306#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
+                            Trport.WriteLine("306#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
                         }
                         ));
                     }
@@ -434,7 +389,7 @@ namespace Digi_Com.AppForms
 
                             Global.fileByteLength = bytes.Length;
                             Thread.Sleep(1000);
-                            Trport.WriteLine("500#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
+                            Trport.WriteLine("500#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
                             Thread.Sleep(100);
                             byte[] b2 = new byte[2048];
                             //Array.Copy(bytes, bytes.Length / 2, b1, 0, b1.Length);
@@ -493,7 +448,6 @@ namespace Digi_Com.AppForms
                 }
 
 
-                #endregion
 
                 #region Pattern 000#00#000000
                 //Pattern for Match XXX#XX#XXXXXXn
@@ -516,7 +470,7 @@ namespace Digi_Com.AppForms
 
                     string Response = tokens[2];
 
-
+                    
 
                     #region Code 303 | Store Bob's Key & Generate Secret Key
                     if (Convert.ToInt32(code) == 303)
@@ -528,7 +482,7 @@ namespace Digi_Com.AppForms
                             txtDisplay.Text += "\r\nSecret Key: " + Global.GenKey;
                             txtDisplay.ScrollToCaret();
 
-                            Trport.WriteLine("304#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey);
+                            Trport.WriteLine("304#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
                         }
                         ));
                     }
@@ -560,17 +514,15 @@ namespace Digi_Com.AppForms
                     #endregion
 
                 }
-                Thread.Sleep(3000);
                 #endregion
+
+
                 if (_isReceiving)
                 {
-                    Thread.Sleep(2000);
                     int bytes = Trport.BytesToRead;
                     byte[] byte_buffer = new byte[bytes];
                     Trport.Read(byte_buffer, 0, bytes);
                     Display(byte_buffer);
-
-
                 }
 
             }
@@ -582,7 +534,6 @@ namespace Digi_Com.AppForms
         }
         public void Display(byte[] inputData)
         {
-            Thread.Sleep(3000);
 
             // textBox1.Invoke(new DelegateDispla,y(showdata), inputData);
 
@@ -698,6 +649,25 @@ namespace Digi_Com.AppForms
             }
         }
 
+
+        public void UpdateLabelText(TextBox textbox, string newText)
+        {
+            // Check if the label is created on the UI thread
+            if (textbox.InvokeRequired)
+            {
+
+                // If called from a different thread, invoke the call on the UI thread
+                textbox.BeginInvoke(new Action(() => UpdateLabelText(textbox, newText)));
+            }
+            else
+            {
+                // Update the label text on the UI thread
+                textbox.Text = newText;
+            }
+            _db.writeLog(newText);
+        }
+
+
         private void panelTopbar_Paint(object sender, PaintEventArgs e)
         {
 
@@ -735,6 +705,8 @@ namespace Digi_Com.AppForms
             }
 
         }
+
+
 
     }
 }

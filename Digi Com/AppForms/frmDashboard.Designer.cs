@@ -96,9 +96,8 @@
             this.panelTopbar.Controls.Add(this.bunifuSwitch1);
             this.panelTopbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopbar.Location = new System.Drawing.Point(0, 0);
-            this.panelTopbar.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelTopbar.Name = "panelTopbar";
-            this.panelTopbar.Size = new System.Drawing.Size(2693, 107);
+            this.panelTopbar.Size = new System.Drawing.Size(520, 45);
             this.panelTopbar.TabIndex = 3;
             this.panelTopbar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTopbar_Paint);
             // 
@@ -124,14 +123,14 @@
             this.btnMin.IconVisible = true;
             this.btnMin.IconZoom = 50D;
             this.btnMin.IsTab = false;
-            this.btnMin.Location = new System.Drawing.Point(2584, 12);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.btnMin.Location = new System.Drawing.Point(969, 5);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnMin.Name = "btnMin";
             this.btnMin.Normalcolor = System.Drawing.Color.Transparent;
             this.btnMin.OnHovercolor = System.Drawing.Color.Transparent;
             this.btnMin.OnHoverTextColor = System.Drawing.Color.White;
             this.btnMin.selected = false;
-            this.btnMin.Size = new System.Drawing.Size(91, 67);
+            this.btnMin.Size = new System.Drawing.Size(34, 28);
             this.btnMin.TabIndex = 19;
             this.btnMin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMin.Textcolor = System.Drawing.Color.White;
@@ -143,10 +142,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.Azure;
-            this.label1.Location = new System.Drawing.Point(2197, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label1.Location = new System.Drawing.Point(824, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 32);
+            this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Receive Mode";
             // 
@@ -156,10 +154,9 @@
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblUsername.Location = new System.Drawing.Point(24, 31);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblUsername.Location = new System.Drawing.Point(9, 13);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(347, 46);
+            this.lblUsername.Size = new System.Drawing.Size(147, 20);
             this.lblUsername.TabIndex = 3;
             this.lblUsername.Text = "Welcome {User} !";
             // 
@@ -169,12 +166,12 @@
             this.bunifuSwitch1.BorderRadius = 0;
             this.bunifuSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.bunifuSwitch1.Location = new System.Drawing.Point(2419, 29);
-            this.bunifuSwitch1.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.bunifuSwitch1.Location = new System.Drawing.Point(907, 12);
+            this.bunifuSwitch1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.bunifuSwitch1.Name = "bunifuSwitch1";
             this.bunifuSwitch1.Oncolor = System.Drawing.Color.LimeGreen;
             this.bunifuSwitch1.Onoffcolor = System.Drawing.Color.Red;
-            this.bunifuSwitch1.Size = new System.Drawing.Size(0, 0);
+            this.bunifuSwitch1.Size = new System.Drawing.Size(51, 19);
             this.bunifuSwitch1.TabIndex = 5;
             this.bunifuSwitch1.Textcolor = System.Drawing.Color.Gray;
             this.bunifuSwitch1.Value = true;
@@ -194,12 +191,11 @@
             this.bunifuCards1.Controls.Add(this.lblTotalStation);
             this.bunifuCards1.Controls.Add(this.label2);
             this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(992, 129);
-            this.bunifuCards1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.bunifuCards1.Location = new System.Drawing.Point(372, 54);
             this.bunifuCards1.Name = "bunifuCards1";
             this.bunifuCards1.RightSahddow = true;
             this.bunifuCards1.ShadowDepth = 20;
-            this.bunifuCards1.Size = new System.Drawing.Size(371, 346);
+            this.bunifuCards1.Size = new System.Drawing.Size(139, 145);
             this.bunifuCards1.TabIndex = 5;
             // 
             // lblTotalStation
@@ -207,10 +203,9 @@
             this.lblTotalStation.AutoSize = true;
             this.lblTotalStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalStation.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTotalStation.Location = new System.Drawing.Point(115, 134);
-            this.lblTotalStation.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTotalStation.Location = new System.Drawing.Point(43, 56);
             this.lblTotalStation.Name = "lblTotalStation";
-            this.lblTotalStation.Size = new System.Drawing.Size(92, 101);
+            this.lblTotalStation.Size = new System.Drawing.Size(36, 39);
             this.lblTotalStation.TabIndex = 8;
             this.lblTotalStation.Text = "0";
             // 
@@ -218,10 +213,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(35, 36);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Location = new System.Drawing.Point(13, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 32);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Total Station";
             // 
@@ -234,12 +228,11 @@
             this.bunifuCards2.Controls.Add(this.lblTodayFreq);
             this.bunifuCards2.Controls.Add(this.label5);
             this.bunifuCards2.LeftSahddow = false;
-            this.bunifuCards2.Location = new System.Drawing.Point(1379, 129);
-            this.bunifuCards2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.bunifuCards2.Location = new System.Drawing.Point(517, 54);
             this.bunifuCards2.Name = "bunifuCards2";
             this.bunifuCards2.RightSahddow = true;
             this.bunifuCards2.ShadowDepth = 20;
-            this.bunifuCards2.Size = new System.Drawing.Size(411, 346);
+            this.bunifuCards2.Size = new System.Drawing.Size(154, 145);
             this.bunifuCards2.TabIndex = 6;
             // 
             // lblTodayFreq
@@ -247,10 +240,9 @@
             this.lblTodayFreq.AutoSize = true;
             this.lblTodayFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTodayFreq.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTodayFreq.Location = new System.Drawing.Point(85, 134);
-            this.lblTodayFreq.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTodayFreq.Location = new System.Drawing.Point(32, 56);
             this.lblTodayFreq.Name = "lblTodayFreq";
-            this.lblTodayFreq.Size = new System.Drawing.Size(214, 101);
+            this.lblTodayFreq.Size = new System.Drawing.Size(84, 39);
             this.lblTodayFreq.TabIndex = 10;
             this.lblTodayFreq.Text = "0.00";
             // 
@@ -258,10 +250,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(19, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label5.Location = new System.Drawing.Point(7, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(336, 32);
+            this.label5.Size = new System.Drawing.Size(128, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Today\'s Frequency (MHz)";
             // 
@@ -275,11 +266,9 @@
             this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Controls.Add(this.lvLogs);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(557, 489);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupBox1.Location = new System.Drawing.Point(209, 205);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.groupBox1.Size = new System.Drawing.Size(2104, 618);
+            this.groupBox1.Size = new System.Drawing.Size(789, 259);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Call Log";
@@ -287,20 +276,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1427, 52);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label4.Location = new System.Drawing.Point(535, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 32);
+            this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "To Date";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(941, 52);
-            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label3.Location = new System.Drawing.Point(353, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 32);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "From Date";
             // 
@@ -308,29 +295,26 @@
             // 
             this.dtToDate.CustomFormat = "yyyy-MM-dd";
             this.dtToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtToDate.Location = new System.Drawing.Point(1565, 45);
-            this.dtToDate.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.dtToDate.Location = new System.Drawing.Point(587, 19);
             this.dtToDate.Name = "dtToDate";
-            this.dtToDate.Size = new System.Drawing.Size(287, 38);
+            this.dtToDate.Size = new System.Drawing.Size(110, 20);
             this.dtToDate.TabIndex = 12;
             // 
             // dtFromDate
             // 
             this.dtFromDate.CustomFormat = "yyyy-MM-dd";
             this.dtFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFromDate.Location = new System.Drawing.Point(1107, 45);
-            this.dtFromDate.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.dtFromDate.Location = new System.Drawing.Point(415, 19);
             this.dtFromDate.Name = "dtFromDate";
-            this.dtFromDate.Size = new System.Drawing.Size(289, 38);
+            this.dtFromDate.Size = new System.Drawing.Size(111, 20);
             this.dtFromDate.TabIndex = 11;
             // 
             // btnExport
             // 
             this.btnExport.ForeColor = System.Drawing.Color.Black;
-            this.btnExport.Location = new System.Drawing.Point(1888, 43);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnExport.Location = new System.Drawing.Point(708, 18);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(200, 55);
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 10;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -346,10 +330,9 @@
             this.colMessages});
             this.lvLogs.GridLines = true;
             this.lvLogs.HideSelection = false;
-            this.lvLogs.Location = new System.Drawing.Point(16, 117);
-            this.lvLogs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.lvLogs.Location = new System.Drawing.Point(6, 49);
             this.lvLogs.Name = "lvLogs";
-            this.lvLogs.Size = new System.Drawing.Size(2072, 486);
+            this.lvLogs.Size = new System.Drawing.Size(777, 204);
             this.lvLogs.TabIndex = 9;
             this.lvLogs.UseCompatibleStateImageBehavior = false;
             this.lvLogs.View = System.Windows.Forms.View.Details;
@@ -381,19 +364,17 @@
             this.panel1.Controls.Add(this.bunifuFlatButton1);
             this.panel1.Controls.Add(this.btnLogOut);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 107);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 1059);
+            this.panel1.Size = new System.Drawing.Size(200, 285);
             this.panel1.TabIndex = 7;
             // 
             // btnPlayMessage
             // 
             this.btnPlayMessage.Enabled = false;
-            this.btnPlayMessage.Location = new System.Drawing.Point(35, 622);
-            this.btnPlayMessage.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnPlayMessage.Location = new System.Drawing.Point(13, 261);
             this.btnPlayMessage.Name = "btnPlayMessage";
-            this.btnPlayMessage.Size = new System.Drawing.Size(459, 93);
+            this.btnPlayMessage.Size = new System.Drawing.Size(172, 39);
             this.btnPlayMessage.TabIndex = 11;
             this.btnPlayMessage.Text = "Play Last Received Message";
             this.btnPlayMessage.UseVisualStyleBackColor = true;
@@ -423,14 +404,14 @@
             this.btnScheduleManager.IconVisible = true;
             this.btnScheduleManager.IconZoom = 60D;
             this.btnScheduleManager.IsTab = false;
-            this.btnScheduleManager.Location = new System.Drawing.Point(0, 181);
-            this.btnScheduleManager.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.btnScheduleManager.Location = new System.Drawing.Point(0, 76);
+            this.btnScheduleManager.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnScheduleManager.Name = "btnScheduleManager";
             this.btnScheduleManager.Normalcolor = System.Drawing.Color.Transparent;
             this.btnScheduleManager.OnHovercolor = System.Drawing.Color.MidnightBlue;
             this.btnScheduleManager.OnHoverTextColor = System.Drawing.Color.White;
             this.btnScheduleManager.selected = false;
-            this.btnScheduleManager.Size = new System.Drawing.Size(533, 114);
+            this.btnScheduleManager.Size = new System.Drawing.Size(200, 48);
             this.btnScheduleManager.TabIndex = 1;
             this.btnScheduleManager.Text = "Schedule Manager";
             this.btnScheduleManager.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -462,14 +443,14 @@
             this.btnStationManager.IconVisible = true;
             this.btnStationManager.IconZoom = 60D;
             this.btnStationManager.IsTab = false;
-            this.btnStationManager.Location = new System.Drawing.Point(0, 305);
-            this.btnStationManager.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.btnStationManager.Location = new System.Drawing.Point(0, 128);
+            this.btnStationManager.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnStationManager.Name = "btnStationManager";
             this.btnStationManager.Normalcolor = System.Drawing.Color.Transparent;
             this.btnStationManager.OnHovercolor = System.Drawing.Color.MidnightBlue;
             this.btnStationManager.OnHoverTextColor = System.Drawing.Color.White;
             this.btnStationManager.selected = false;
-            this.btnStationManager.Size = new System.Drawing.Size(533, 114);
+            this.btnStationManager.Size = new System.Drawing.Size(200, 48);
             this.btnStationManager.TabIndex = 2;
             this.btnStationManager.Text = "Station Manager";
             this.btnStationManager.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -501,14 +482,14 @@
             this.btnUserManager.IconVisible = true;
             this.btnUserManager.IconZoom = 60D;
             this.btnUserManager.IsTab = false;
-            this.btnUserManager.Location = new System.Drawing.Point(0, 424);
-            this.btnUserManager.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.btnUserManager.Location = new System.Drawing.Point(0, 178);
+            this.btnUserManager.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnUserManager.Name = "btnUserManager";
             this.btnUserManager.Normalcolor = System.Drawing.Color.Transparent;
             this.btnUserManager.OnHovercolor = System.Drawing.Color.MidnightBlue;
             this.btnUserManager.OnHoverTextColor = System.Drawing.Color.White;
             this.btnUserManager.selected = false;
-            this.btnUserManager.Size = new System.Drawing.Size(533, 114);
+            this.btnUserManager.Size = new System.Drawing.Size(200, 48);
             this.btnUserManager.TabIndex = 3;
             this.btnUserManager.Text = "User Manager";
             this.btnUserManager.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -521,21 +502,19 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.LightGray;
-            this.label6.Location = new System.Drawing.Point(131, 55);
-            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label6.Location = new System.Drawing.Point(49, 23);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(353, 76);
+            this.label6.Size = new System.Drawing.Size(70, 31);
             this.label6.TabIndex = 8;
-            this.label6.Text = "DIGI COM";
+            this.label6.Text = "PFS";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Digi_Com.Properties.Resources.radio;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 157);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 66);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
@@ -563,14 +542,14 @@
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 756);
-            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 317);
+            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.Transparent;
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.MidnightBlue;
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(533, 114);
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(200, 48);
             this.bunifuFlatButton1.TabIndex = 9;
             this.bunifuFlatButton1.Text = "Change Password";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -602,14 +581,14 @@
             this.btnLogOut.IconVisible = true;
             this.btnLogOut.IconZoom = 90D;
             this.btnLogOut.IsTab = false;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 851);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(21, 17, 21, 17);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 357);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Normalcolor = System.Drawing.Color.Transparent;
             this.btnLogOut.OnHovercolor = System.Drawing.Color.MidnightBlue;
             this.btnLogOut.OnHoverTextColor = System.Drawing.Color.White;
             this.btnLogOut.selected = false;
-            this.btnLogOut.Size = new System.Drawing.Size(533, 114);
+            this.btnLogOut.Size = new System.Drawing.Size(200, 48);
             this.btnLogOut.TabIndex = 4;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -630,10 +609,10 @@
             this.btnMakeCall.ImageZoom = 50;
             this.btnMakeCall.LabelPosition = 41;
             this.btnMakeCall.LabelText = "Make A Call";
-            this.btnMakeCall.Location = new System.Drawing.Point(557, 129);
-            this.btnMakeCall.Margin = new System.Windows.Forms.Padding(16, 14, 16, 14);
+            this.btnMakeCall.Location = new System.Drawing.Point(209, 54);
+            this.btnMakeCall.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnMakeCall.Name = "btnMakeCall";
-            this.btnMakeCall.Size = new System.Drawing.Size(411, 334);
+            this.btnMakeCall.Size = new System.Drawing.Size(154, 140);
             this.btnMakeCall.TabIndex = 4;
             this.btnMakeCall.Click += new System.EventHandler(this.btnMakeCall_Click);
             // 
@@ -644,11 +623,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.lblLastLogin});
-            this.statusStrip1.Location = new System.Drawing.Point(533, 1120);
+            this.statusStrip1.Location = new System.Drawing.Point(200, 308);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(3, 0, 37, 0);
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(2160, 46);
+            this.statusStrip1.Size = new System.Drawing.Size(320, 22);
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -656,24 +634,23 @@
             // 
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Green;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(175, 41);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(70, 17);
             this.toolStripStatusLabel1.Text = "Last Login : ";
             // 
             // lblLastLogin
             // 
             this.lblLastLogin.ForeColor = System.Drawing.Color.Green;
             this.lblLastLogin.Name = "lblLastLogin";
-            this.lblLastLogin.Size = new System.Drawing.Size(190, 41);
+            this.lblLastLogin.Size = new System.Drawing.Size(76, 17);
             this.lblLastLogin.Text = "Not available";
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(1805, 129);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(677, 54);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(856, 346);
+            this.pictureBox2.Size = new System.Drawing.Size(321, 145);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
@@ -682,12 +659,11 @@
             this.txtDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(173)))), ((int)(((byte)(52)))));
             this.txtDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplay.Location = new System.Drawing.Point(1883, 231);
-            this.txtDisplay.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txtDisplay.Location = new System.Drawing.Point(706, 97);
             this.txtDisplay.Multiline = true;
             this.txtDisplay.Name = "txtDisplay";
             this.txtDisplay.ReadOnly = true;
-            this.txtDisplay.Size = new System.Drawing.Size(709, 141);
+            this.txtDisplay.Size = new System.Drawing.Size(266, 59);
             this.txtDisplay.TabIndex = 12;
             // 
             // lblTrMessage
@@ -696,23 +672,22 @@
             this.lblTrMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(173)))), ((int)(((byte)(52)))));
             this.lblTrMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrMessage.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblTrMessage.Location = new System.Drawing.Point(1893, 253);
-            this.lblTrMessage.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTrMessage.Location = new System.Drawing.Point(710, 106);
             this.lblTrMessage.Name = "lblTrMessage";
-            this.lblTrMessage.Size = new System.Drawing.Size(601, 95);
+            this.lblTrMessage.Size = new System.Drawing.Size(251, 39);
             this.lblTrMessage.TabIndex = 15;
             this.lblTrMessage.Text = "System Offline";
             this.lblTrMessage.Visible = false;
             // 
             // frmDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.BackgroundImage = global::Digi_Com.Properties.Resources.backgroud;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(2693, 1166);
+            this.ClientSize = new System.Drawing.Size(520, 330);
             this.Controls.Add(this.lblTrMessage);
             this.Controls.Add(this.txtDisplay);
             this.Controls.Add(this.pictureBox2);
@@ -725,7 +700,6 @@
             this.Controls.Add(this.panelTopbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "frmDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDashboard";

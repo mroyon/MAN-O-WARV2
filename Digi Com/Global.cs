@@ -149,6 +149,13 @@ namespace Digi_Com
             set { _genKey = value; }
         }
 
+        private static string _stepCode = string.Empty;
+        public static string StepCode
+        {
+            get { return _stepCode; }
+            set { _stepCode = value; }
+        }
+
         private static string _callerFingerID = string.Empty;
         public static string callerFingerID
         {

@@ -198,7 +198,7 @@
             this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnBrowse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBrowse.BorderRadius = 0;
-            this.btnBrowse.ButtonText = "Select Audio";
+            this.btnBrowse.ButtonText = "Select Files";
             this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowse.DisabledColor = System.Drawing.Color.Gray;
             this.btnBrowse.Iconcolor = System.Drawing.Color.Transparent;
@@ -221,7 +221,7 @@
             this.btnBrowse.selected = false;
             this.btnBrowse.Size = new System.Drawing.Size(134, 48);
             this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "Select Audio";
+            this.btnBrowse.Text = "Select Files";
             this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowse.Textcolor = System.Drawing.Color.White;
             this.btnBrowse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

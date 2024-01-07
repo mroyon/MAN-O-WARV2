@@ -290,13 +290,13 @@ namespace Digi_Com.AppForms
             UpdateLabelText(txtDisplay, "\r\nCreating Session.....");
 
 
-            //Send Value of P to the Recipient
-            Trport.WriteLine(String.Format("301#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString()));  //Respose Code # Station ID # Value of P
-            Thread.Sleep(2000);
-            //Send Value of G to the Recipient
-            Trport.WriteLine(String.Format("302#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString()));  //Respose Code # Station ID # Value of P
-            Thread.Sleep(2000);
-            //Now I will send my Public Key to the Recipient
+            ////Send Value of P to the Recipient
+            //Trport.WriteLine(String.Format("301#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString()));  //Respose Code # Station ID # Value of P
+            //Thread.Sleep(2000);
+            ////Send Value of G to the Recipient
+            //Trport.WriteLine(String.Format("302#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString()));  //Respose Code # Station ID # Value of P
+            //Thread.Sleep(2000);
+            ////Now I will send my Public Key to the Recipient
             Trport.WriteLine(String.Format("303#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString())); //Sending My Public Key
 
             return retValue;
@@ -345,9 +345,10 @@ namespace Digi_Com.AppForms
             {
                 UpdateLabelText(txtDisplay, "Session Created.");
                 UpdateLabelText(txtDisplay, "\r\nSecret Key: " + Global.GenKey);
-                Trport.WriteLine("304#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
+               
             }));
 
+            Trport.WriteLine("304#" + Global.MyStationID + "00" + "#" + Global.callerFingerID + "#" + Global.GenKey + "#" + Global.fileByteLength.ToString());
 
             return retValue;
         }
@@ -555,7 +556,7 @@ namespace Digi_Com.AppForms
                         GetStep_302(tokens);
                     }
                     #endregion
-                    #region Code 303 | Store Bob's Key & Generate Secret Key
+                    #region Code 303 | Store Bob's Key & Generate Secret Keyj
                     if (Convert.ToInt32(code) == 303)
                     {
                         GetStep_303(tokens);
@@ -729,20 +730,13 @@ namespace Digi_Com.AppForms
 
         public void UpdateLabelText(TextBox textbox, string newText)
         {
-            // Check if the label is created on the UI thread
-            if (textbox.InvokeRequired)
+            textbox.Invoke((Action)delegate
             {
-
-                // If called from a different thread, invoke the call on the UI thread
-                textbox.BeginInvoke(new Action(() => UpdateLabelText(textbox, newText)));
-                textbox.ScrollToCaret();
-            }
-            else
-            {
-                // Update the label text on the UI thread
                 textbox.Text = newText;
                 textbox.ScrollToCaret();
-            }
+            });
+
+           
             _db.writeLog(newText);
         }
 
